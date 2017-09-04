@@ -1,12 +1,6 @@
 <template>
 
   <style>
-    .quote-carrousel {
-      margin: 5em 15em 2em 20em;
-      padding: 10em 10em;
-      background-color: yellow;
-    }
-
     .menu-button{
       float: right;
       height: 14em;
@@ -23,290 +17,202 @@
     }
 
 
+    /** {*/
+      /*box-sizing:border-box*/
+    /*}*/
     .carousel {
+    .slideshow-container {
       position: relative;
       box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
-      margin-top: 26px;
-    }
-
-    .carousel-inner {
-      position: relative;
+      margin-top: 5%;
+      margin-left: 15%;
+      width: 68%;
       overflow: hidden;
-      width: 100%;
+      height: 4 0em;
     }
 
-    .carousel-open:checked + .carousel-item {
-      position: static;
-      opacity: 100;
-    }
-
-    .carousel-item {
-      position: absolute;
-      opacity: 0;
-      -webkit-transition: opacity 0.6s ease-out;
-      transition: opacity 0.6s ease-out;
-    }
-
-    .carousel-item img {
-      display: block;
-      height: auto;
-      max-width: 100%;
-    }
-
-    .carousel-control {
-      background: rgba(0, 0, 0, 0.28);
-      border-radius: 50%;
-      color: #fff;
-      cursor: pointer;
+    .mySlides {
       display: none;
-      font-size: 40px;
-      height: 40px;
-      line-height: 35px;
+      padding: 15% 5%;
+      text-align: center;
+    }
+
+    .mySlides.active{
+      display: block;
+    }
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
       position: absolute;
       top: 50%;
-      -webkit-transform: translate(0, -50%);
-      cursor: pointer;
-      -ms-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-      text-align: center;
-      width: 40px;
-      z-index: 10;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
     }
 
-    .carousel-control.prev {
-      left: 2%;
-    }
-
-    .carousel-control.next {
-      right: 2%;
-    }
-
-    .carousel-control:hover {
-      background: rgba(0, 0, 0, 0.8);
-      color: #aaaaaa;
-    }
-
-    #carousel-1:checked ~ .control-1,
-    #carousel-2:checked ~ .control-2,
-    #carousel-3:checked ~ .control-3 {
-      display: block;
-    }
-
-    .carousel-indicators {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      position: absolute;
-      bottom: 2%;
-      left: 0;
+    /* Position the "next button" to the right */
+    .next {
       right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+
+    /* Caption text */
+    .quote{
+      color: black;
+      font-family: 'Merriweather', serif;
+      font-size: 30px;
+      font-weight: 300;
+      line-height: 40px;
+      margin: 0 30px 40px;
       text-align: center;
-      z-index: 10;
+      text-shadow: #2a8d7b -1px -1px;
     }
 
-    .carousel-indicators li {
-      display: inline-block;
-      margin: 0 5px;
+    .quote-background{
+      width: 32em;
+      max-height:  19em;
     }
 
-    .carousel-bullet {
-      color: #fff;
-      cursor: pointer;
-      display: block;
-      font-size: 35px;
-    }
-
-    .carousel-bullet:hover {
-      color: #aaaaaa;
-    }
-
-    #carousel-1:checked ~ .control-1 ~ .carousel-indicators li:nth-child(1) .carousel-bullet,
-    #carousel-2:checked ~ .control-2 ~ .carousel-indicators li:nth-child(2) .carousel-bullet,
-    #carousel-3:checked ~ .control-3 ~ .carousel-indicators li:nth-child(3) .carousel-bullet {
-      color: #428bca;
-    }
-
-    #title {
-      width: 100%;
+    p.author {
+      padding: 8px 12px;
       position: absolute;
-      padding: 0px;
-      margin: 0px auto;
+      bottom: 8px;
+      width: 100%;
       text-align: center;
-      font-size: 27px;
-      color: rgba(255, 255, 255, 1);
-      font-family: 'Open Sans', sans-serif;
-      z-index: 9999;
-      text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+    }
+    p.author {
+      color: black;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      line-height: 12px;
+      letter-spacing: 3px;
+      text-align: center;
+      text-shadow: #53b4a2 1px 1px;
+      text-transform: uppercase
     }
 
-    /*!*Carrousel CSS*!*/
-    /** {box-sizing:border-box}*/
 
-    /*!* Slideshow container *!*/
-    /*.slideshow-container {*/
-    /*max-width: 1000px;*/
-    /*position: relative;*/
-    /*margin: auto;*/
-    /*}*/
+    p.author span {
+      color: black;
+      font-family: 'Helvetica Neue', sans-serif;
+      font-style: italic;
+      font-weight: normal;
+      letter-spacing: normal;
+      text-transform: none;
+    }
 
-    /*.mySlides {*/
-    /*display: none;*/
-    /*}*/
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
 
-    /*!* Next & previous buttons *!*/
-    /*.prev, .next {*/
-    /*cursor: pointer;*/
-    /*position: absolute;*/
-    /*top: 50%;*/
-    /*width: auto;*/
-    /*margin-top: -22px;*/
-    /*padding: 16px;*/
-    /*color: white;*/
-    /*font-weight: bold;*/
-    /*font-size: 18px;*/
-    /*transition: 0.6s ease;*/
-    /*border-radius: 0 3px 3px 0;*/
-    /*}*/
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor:pointer;
+      height: 13px;
+      width: 13px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
 
-    /*!* Position the "next button" to the right *!*/
-    /*.next {*/
-    /*right: 0;*/
-    /*border-radius: 3px 0 0 3px;*/
-    /*}*/
+    .dot.active, .dot:hover {
+      background-color: #717171;
+    }
 
-    /*!* On hover, add a black background color with a little bit see-through *!*/
-    /*.prev:hover, .next:hover {*/
-    /*background-color: rgba(0,0,0,0.8);*/
-    /*}*/
+    /* Fading animation */
+    .fade {
+      -webkit-animation-name: fade;
+      -webkit-animation-duration: 1.5s;
+      animation-name: fade;
+      animation-duration: 1.5s;
+    }
 
-    /*!* Caption text *!*/
-    /*.text {*/
-    /*color: #f2f2f2;*/
-    /*font-size: 15px;*/
-    /*padding: 8px 12px;*/
-    /*position: absolute;*/
-    /*bottom: 8px;*/
-    /*width: 100%;*/
-    /*text-align: center;*/
-    /*}*/
+    @-webkit-keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
-    /*!* Number text (1/3 etc) *!*/
-    /*.numbertext {*/
-    /*color: #f2f2f2;*/
-    /*font-size: 12px;*/
-    /*padding: 8px 12px;*/
-    /*position: absolute;*/
-    /*top: 0;*/
-    /*}*/
-
-    /*!* The dots/bullets/indicators *!*/
-    /*.dot {*/
-    /*cursor:pointer;*/
-    /*height: 13px;*/
-    /*width: 13px;*/
-    /*margin: 0 2px;*/
-    /*background-color: #bbb;*/
-    /*border-radius: 50%;*/
-    /*display: inline-block;*/
-    /*transition: background-color 0.6s ease;*/
-    /*}*/
-
-    /*.active, .dot:hover {*/
-    /*background-color: #717171;*/
-    /*}*/
-
-    /*!* Fading animation *!*/
-    /*.fade {*/
-    /*-webkit-animation-name: fade;*/
-    /*-webkit-animation-duration: 1.5s;*/
-    /*animation-name: fade;*/
-    /*animation-duration: 1.5s;*/
-    /*}*/
-
-    /*@-webkit-keyframes fade {*/
-    /*from {opacity: .4}*/
-    /*to {opacity: 1}*/
-    /*}*/
-
-    /*@keyframes fade {*/
-    /*from {opacity: .4}*/
-    /*to {opacity: 1}*/
-    /*}*/
+    @keyframes fade {
+      from {opacity: .4}
+      to {opacity: 1}
+    }
 
   </style>
 
   <h1>Welcome Home!</h1>
-  <!--<div class="quote-carrousel">-->
-    <!--<ul>-->
-      <!--<li class="actual-quote" repeat.for="quote of quotes"><span>${quote.quote}</span><span>${quote.author}</span></li>-->
-    <!--</ul>-->
+
+  <!--<div class="carousel">-->
+
+      <!--<input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">-->
+      <!--<div class="carousel-item">-->
+        <!--<img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">-->
+      <!--</div>-->
+      <!--<label for="carousel-3" class="carousel-control prev control-1">‹</label>-->
+      <!--<label for="carousel-2" class="carousel-control next control-1">›</label>-->
+
+      <!--<input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">-->
+      <!--<div class="carousel-item">-->
+        <!--<img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">-->
+      <!--</div>-->
+      <!--<label for="carousel-1" class="carousel-control prev control-2">‹</label>-->
+      <!--<label for="carousel-3" class="carousel-control next control-2">›</label>-->
+
+      <!--<input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">-->
+      <!--<div class="carousel-item">-->
+        <!--<img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">-->
+      <!--</div>-->
+      <!--<label for="carousel-2" class="carousel-control prev control-3">‹</label>-->
+      <!--<label for="carousel-1" class="carousel-control next control-3">›</label>-->
+
+      <!--<div class="carousel-indicators">-->
+        <!--<span for="carousel-1" class="carousel-bullet"></span >-->
+        <!--<span for="carousel-2" class="carousel-bullet"></span>-->
+        <!--<span for="carousel-3" class="carousel-bullet"></span>-->
+      <!--</div>-->
   <!--</div>-->
 
-  <div class="carousel">
-    <div class="carousel-inner">
-      <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden="" checked="checked">
-
-      <div class="carousel-item">
-        <img src="http://fakeimg.pl/2000x800/0079D8/fff/?text=Without">
-      </div>
-      <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-
-      <div class="carousel-item">
-        <img src="http://fakeimg.pl/2000x800/DA5930/fff/?text=JavaScript">
-      </div>
-      <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-
-      <div class="carousel-item">
-        <img src="http://fakeimg.pl/2000x800/F90/fff/?text=Carousel">
-      </div>
-      <label for="carousel-3" class="carousel-control prev control-1">‹</label>
-      <label for="carousel-2" class="carousel-control next control-1">›</label>
-
-      <label for="carousel-1" class="carousel-control prev control-2">‹</label>
-      <label for="carousel-3" class="carousel-control next control-2">›</label>
-
-      <label for="carousel-2" class="carousel-control prev control-3">‹</label>
-      <label for="carousel-1" class="carousel-control next control-3">›</label>
-
-      <ol class="carousel-indicators">
-        <!--<span class="dot" for="carousel-1"></span>-->
-        <!--<span class="dot" for="carousel-2" ></span>-->
-        <!--<span class="dot" for="carousel-3"></span>-->
-        <li>
-          <label for="carousel-1" class="carousel-bullet">•</label>
-        </li>
-        <li>
-          <label for="carousel-2" class="carousel-bullet">•</label>
-        </li>
-        <li>
-          <label for="carousel-3" class="carousel-bullet">•</label>
-        </li>
-      </ol>
-
+  <div class="slideshow-container">
+    <div class="mySlides fade ${$index == activeIndex ? 'active' : ''}"
+         repeat.for="quote of quotes">
+      <!--<div class="numbertext">1 / 3</div>-->
+      <img class="quote-background" src="src/resources/images/${quote.background}">
+      <blockquote class="quote"><p>${quote.quote}</p></blockquote>
+      <p class="author"><span>by</span> ${quote.author}</p>
     </div>
+
+    <a class="prev" onclick.call="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick.call="plusSlides(1)">&#10095;</a>
+  </div>
+  <br>
+
+  <div style="text-align:center">
+    <span class="dot" onclick.call="plusSlides(-2)"></span>
+    <span class="dot" onclick.call="plusSlides(-1)"></span>
+    <span class="dot" onclick.call="plusSlides(1)"></span>
+    <span class="dot" onclick.call="plusSlides(2)"></span>
   </div>
 
-  <!--<div class="slideshow-container">-->
-    <!--<div class="mySlides fade"-->
-         <!--repeat.for="quote of quotes">-->
-      <!--&lt;!&ndash;<div class="numbertext">1 / 3</div>&ndash;&gt;-->
-      <!--&lt;!&ndash;<img src="img1.jpg" style="width:100%">&ndash;&gt;-->
-      <!--<div class="citation">${quote.quote}</div>-->
-      <!--<div class="text">${quote.author}</div>-->
-    <!--</div>-->
-
-    <!--<a class="prev" onclick="plusSlides(-1)">&#10094;</a>-->
-    <!--<a class="next" onclick="plusSlides(1)">&#10095;</a>-->
+  <!-- <div class="menu">-->
+    <!--<button class="menu-button" >-->
+      <!--<img src="src/resources/images/images-icon-44120.png" style="">-->
+    <!--</button>-->
   <!--</div>-->
-  <!--<br>-->
-
-  <!--<div style="text-align:center">-->
-  <!--</div>-->
-
-
-   <div class="menu">
-    <button class="menu-button" >
-      <img src="src/resources/images/images-icon-44120.png" style="">
-    </button>
-  </div>
 </template>
